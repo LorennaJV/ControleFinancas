@@ -20,14 +20,20 @@ h1, h2 {
 }
 
 
-#forms {
+#forms{
     background-color: #ffffff;
     border: 2px solid #d8c7f0;
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 25px;
 }
-
+#formsresumo{
+     background-color: #ffffff;
+    border: 2px solid #d8c7f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
 
 form {
     display: flex;
