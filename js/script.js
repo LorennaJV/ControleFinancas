@@ -27,6 +27,8 @@ document.getElementById("FormCadastroDesp").addEventListener("submit", function(
     localStorage.setItem('listagem', JSON.stringify(lista_finanças)); /* Salva */
 
     document.getElementById('FormCadastroDesp').reset(); /* Limpa o formulário */
+
+    exibir_finanças()
 });
 
 
@@ -47,7 +49,7 @@ function exibir_finanças(){
             'Valor: ' + lista_finanças[i].valor + ' - ' +
             'Data: ' + lista_finanças[i].data;
 
-        output.appendChild(li); /* Adiciona na UL */
+        output.appendChild(li); /* Adiciona na ul */
     }
 }
 
@@ -64,18 +66,28 @@ function exibirResumo() {
         total += Number(lista[i].valor);
     }
 
-    let saldo = salario - total; /* Calcula saldo */
+    let saldo = salario - total; 
 
-    alert(
-        "Salário: R$ " + salario +
-        "\nDespesas: R$ " + total +
-        "\nSaldo: R$ " + saldo
-    );
+    document.getElementById('formsresumo').innerHTML
+    formsresumo.textContent= 
+    "Salário: R$ " + salario +
+    "\nDespesas: R$ " + total +
+    "\nSaldo: R$ " + saldo
+    
 }
 
-
-/** Apagar todas as despesas */
 function apagardesp() {
-    localStorage.setItem('listagem', JSON.stringify([])); /** Zera a lista */
+    
+ /*Pega a lista atual*/
+let lista = JSON.parse(localStorage.getItem('listagem')) || [];
+
+if (lista.length === 0) {
+    alert("Não existem despesas para apagar");
+    return;
+    }   
+else{
+localStorage.setItem('listagem', JSON.stringify([])); /** Zera a lista */
     exibir_finanças(); /** Atualiza a tela */
+    }
 }
+
